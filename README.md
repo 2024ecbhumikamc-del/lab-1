@@ -1,4 +1,4 @@
-# Experiment-1-EC029-CS-amplifier
+# Experiment-1-CS-amplifier-EC029
 # DC analysis,AC analysis,Transfer characteristics and Transient Analysis of Common Source Amplifier
 A common-source amplifier is a type of FET amplifier where the input signal is applied to the gate, and the output is taken from the drain. The source is typically grounded. It provides high voltage gain and **180-degree phase shift** (inversion) between the input and output. It’s widely used for amplifying weak signals in analog circuits, with the voltage gain determined by the load resistor and the transconductance of the FET.
 
@@ -9,6 +9,14 @@ A common-source amplifier is a type of FET amplifier where the input signal is a
 4. **AC Input (SINE source):** The test signal used to analyze circuit response.
 
    
+
+
+
+**Circuit diagram:**
+<img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/11ec93cc-889f-432a-933a-01738c9226c4" />
+
+
+
 ## Given Parameters (From tsmc018.lib)
  
 - Vth = 0.366 V  
@@ -26,8 +34,8 @@ As VGS > Vth (0.9 V > 0.366 V),
 the NMOS operates in saturation region.
 
 
-**Circuit diagram:**
-<img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/11ec93cc-889f-432a-933a-01738c9226c4" />
+
+
 
 
 This report presents the DC analysis, AC analysis, Transient analysis of a common-source NMOS amplifier. The objective of this analysis is to determine the DC biasing conditions, gain and output impedence using Transient analysis, and to find frequency response using AC analysis.
@@ -52,23 +60,10 @@ The circuit consists of a tsmc 180nm NMOS transistor (CMOSN), a drain resistor a
 
 **Frequency:** 1kHz
 
-## Procedure:
-
-1.Create a new folder and name it as project file.Save the LT spice file in this folder.
-
-2.Name the mosfet as CMOSN and the length as 500nm and width as 1.11um initially.
-
-3.**DC Analysis**: Set up the circuit as per the circuit diagram with proper connections ensuring valid circuit for further analysis. Apply the DC voltage of Vdd=2V and Vgs = 0.9 V . Go to simulate option in the tab and edit simulation command, click on DC analysis and press ok.(.op) Click on Run in the tab menu to get the DC operating point ,Vout and Id. 
-
-4.**Transfer characteristics**: Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2" Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC).Now Run to see the response of drain current.
-
-5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
-
-6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
 
 ### THOERITICAL CALCULATION :
 
-### Step 1: Calculate Drain Current Using Power Constraint
+## Step 1: Calculate Drain Current Using Power Constraint
 
 Using:
 
@@ -82,7 +77,7 @@ ID ≈ 2.00 × 10⁻⁴ A
 
 ID ≈ 0.200 mA  
 
-### Step 2: Fix Q-Point
+## Step 2: Fix Q-Point
 
 For maximum symmetrical swing:
 
@@ -92,7 +87,7 @@ VDS = 2 / 2
 
 VDS ≈ 1 V  
 
-### Step 3: Calculate Drain Resistor (RD)
+## Step 3: Calculate Drain Resistor (RD)
 
 RD = (VDD − VDS) / ID  
 
@@ -100,7 +95,7 @@ RD = (2 − 1) / (2 × 10⁻⁴)
 
 RD ≈ 5 kΩ  
 
-### Step 4: Calculate Oxide Capacitance (Cox)
+## Step 4: Calculate Oxide Capacitance (Cox)
 
 First calculate oxide permittivity:
 
@@ -118,7 +113,7 @@ Cox = (3.45 × 10⁻¹¹) / (4.1 × 10⁻⁹)
 
 Cox ≈ 8.42 × 10⁻³ F/m²  
 
-### Step 5: Calculate Process Transconductance Parameter (kn')
+## Step 5: Calculate Process Transconductance Parameter (kn')
 
 Convert mobility to SI units:
 
@@ -133,7 +128,7 @@ kn' = 0.02738 × (8.41 × 10⁻³)
 
 kn' ≈ 2.306 × 10⁻⁴ A/V²  
 
-### Step 6: Calculate Required Transistor Width (W)
+## Step 6: Calculate Required Transistor Width (W)
 
 Using MOSFET saturation equation:
 
@@ -158,7 +153,27 @@ W ≈ 1.1 µm
 
 
 
-# DC analysis:
+## Procedure:
+
+1.Create a new folder and name it as project file.Save the LT spice file in this folder.
+
+2.Name the mosfet as CMOSN and the length as 500nm and width as 1.11um initially.
+
+3.**DC Analysis**: Set up the circuit as per the circuit diagram with proper connections ensuring valid circuit for further analysis. Apply the DC voltage of Vdd=2V and Vgs = 0.9 V . Go to simulate option in the tab and edit simulation command, click on DC analysis and press ok.(.op) Click on Run in the tab menu to get the DC operating point ,Vout and Id. 
+
+4.**Transfer characteristics**: Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2" Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC).Now Run to see the response of drain current.
+
+5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
+
+6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circui
+
+
+
+
+
+
+
+### DC analysis:
 <img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/752a1a79-fe6f-47e3-915f-2d396dcdb74b" />
 
 
@@ -175,6 +190,8 @@ As 'L' is 180nm and 'W' is 1.11um the Id value will be 156 µA. Keeping the L co
 | 1.3um    | 178 µA|
 |1.4um     | 189 µA|
 |1.515um   | 200 µA|
+
+
 
 <img width="627" height="467" alt="Screenshot 2026-02-24 122519" src="https://github.com/user-attachments/assets/5d88ea58-dfa9-49a5-91ea-6847f1788dd3" />
 
@@ -209,7 +226,7 @@ Vov = Vgs - Vth = 0.9 - 0.366 = 0.534V
 
 i.e **Vds > ( Vgs - Vth)**
 
-# Transfer characteristics :
+### Transfer characteristics :
 
 We know the equation for output voltage:
 
@@ -229,7 +246,107 @@ As VGS increases, ID increases. This increases the voltage drop across R1, which
 
 
 
-# AC analysis:
+
+
+
+
+### Transient Analysis:
+
+Transient analysis in a common-source amplifier examines how the amplifier reacts to time-varying inputs, such as step or sinusoidal signals. It helps assess the time-domain response, including key parameters like rise time, settling time, and distortion from capacitive effects. The analysis shows how quickly the output responds and whether there are any delays, overshoot, or instability.
+
+For this experiment, we will find the gain and output impedence of the circuit.
+For the same circuit, we will perform the transient analysis keeping the sinusoidal voltage signal  **DC offset as 0.9V**, and **amplitude 10mV**, and **frequency = 1kHz**
+And the **AC amplitude as 1V**.
+In the configure analysis select  **stop time as 5ms**. There is **180 degree phase shift** between input and output and a DC level phase shift observed.
+
+
+
+**Circuit Diagram:**
+
+<img width="1363" height="578" alt="Screenshot 2026-02-24 172121" src="https://github.com/user-attachments/assets/ef1bd1cb-f7da-4367-93a8-47f69e06d574" />
+
+
+
+## Gain Calculation (From Transient Analysis)
+
+From the transient waveform:
+
+**Voltage Gain (Av)** = Vout / Vin  
+
+Peak-to-peak values were measured from the graph.
+
+**Output voltage:**
+
+Vout(max) = 1.032V  
+Vout(min) = 0.973 V  
+
+Vout(pp) =   1.032V -0.973 V
+Vout(pp) = 0.059 V 
+
+**Input voltage:**
+
+Vin(max) = 0.91  V  
+Vin(min) = 0.8903  V  
+
+Vin(pp) = 0.91  V - 0.8903  V  
+Vin(pp) = 0.0197  
+
+Therefore,
+Av = Vout(pp) / Vin(pp)  
+
+Av =  0.059 V  / 0.0197V  
+Av ≈ 3 
+
+**Gain in dB:**
+
+Av(dB) = 20 log(Av)  
+
+Av(dB) = 20 log(3)  
+Av(dB) ≈ 9.54 dB  
+
+
+
+## Theoretical Gain Calculation
+
+For a Common Source amplifier:
+
+Av = gm × RD  
+gm = 2ID / (VGS − Vth)
+
+Given:
+
+ID = 0.2 mA  
+VGS = 0.9 V  
+Vth = 0.366 V  
+RD = 5 kΩ  
+
+**Overdrive voltage:**
+
+Vov = VGS − Vth = 0.9 − 0.366 = 0.534 V  
+
+**Transconductance:**
+
+gm = (2 × 0.2 × 10⁻³) / 0.534  
+gm ≈ 0.75 mS  
+
+Therefore,
+
+Av = gm × RD  
+Av = (0.75 × 10⁻³) × (5000)  
+Av ≈ 3.7 
+
+**Gain in dB:**
+
+Av(dB) = 20 log(3.7)  
+Av(dB) ≈ 11.36 DB 
+
+The simulated gain (3 ) is lower than the theoretical(3.7) value due to channel length modulation, output resistance effects, and other non-ideal device characteristics.
+
+
+
+
+
+### AC analysis:
 
 In this experiment, we will conduct an AC analysis to evaluate the frequency response of the circuit, including parameters such as gain, output impedance, and phase shift. By applying a small-signal AC input, we can assess how the circuit amplifies signals and how it behaves under varying frequencies.
 
@@ -237,9 +354,11 @@ For the same circuit, in the configure analysis select decade as type of sweep, 
 
 **Circuit diagram:**
 
-### AC Response Without Load Capacitor
+## AC Response Without Load Capacitor
 
 <img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/5358be05-6354-49a2-8639-4c7f9337af9f" />
+
+
 
 <img width="1361" height="574" alt="Screenshot 2026-02-24 173350" src="https://github.com/user-attachments/assets/e2290907-bf57-4b28-9278-b00f4d9da090" />
 
@@ -263,7 +382,7 @@ For the same circuit, in the configure analysis select decade as type of sweep, 
 
 
 
-### AC Response With Load Capacitor (CL = 10 pF)
+## AC Response With Load Capacitor (CL = 10 pF)
 
 <img width="1311" height="596" alt="Screenshot 2026-02-24 230233" src="https://github.com/user-attachments/assets/6d2b2aec-a226-4625-9c7c-c9bfa44f1e7f" />
 
@@ -280,147 +399,31 @@ From AC plot (with CL = 10 pF):
 - 3 dB bandwidth ≈ 56.4 GHz
 - Unity Gain Bandwidth (UGB) ≈ 150.23 MHz
 - GBP ≈ 3 × 56.4 GHz
-     ≈  MHz (approx)
+     ≈ 187 MHz (approx)
 
 
 
 
 
-# Transient Analysis:
+## OVERALL COMPARISON TABLE :
 
-Transient analysis in a common-source amplifier examines how the amplifier reacts to time-varying inputs, such as step or sinusoidal signals. It helps assess the time-domain response, including key parameters like rise time, settling time, and distortion from capacitive effects. The analysis shows how quickly the output responds and whether there are any delays, overshoot, or instability.
-
-For this experiment, we will find the gain and output impedence of the circuit.
-For the same circuit, we will perform the transient analysis keeping the sinusoidal voltage signal  **DC offset as 0.9V**, and **amplitude 10mV**, and **frequency = 1kHz**
-And the **AC amplitude as 1V**.
-In the configure analysis select  **stop time as 5ms**. There is **180 degree phase shift** between input and output and a DC level phase shift observed.
-
-**Circuit Diagram:**
-
-<img width="1363" height="578" alt="Screenshot 2026-02-24 172121" src="https://github.com/user-attachments/assets/ef1bd1cb-f7da-4367-93a8-47f69e06d574" />
-
-
-# Gain Calculation (From Transient Analysis)
-
-From the transient waveform:
-
-Voltage Gain (Av) = Vout / Vin  
-
-Peak-to-peak values were measured from the graph.
-
-Output voltage:
-
-Vout(max) = 1.032V  
-Vout(min) = 0.973 V  
-
-Vout(pp) =   1.032V -0.973 V
-Vout(pp) = 0.059 V 
-
-Input voltage:
-
-Vin(max) = 0.91  V  
-Vin(min) = 0.8903  V  
-
-Vin(pp) = 0.91  V - 0.8903  V  
-Vin(pp) = 0.0197  
-
-Therefore,
-Av = Vout(pp) / Vin(pp)  
-
-Av =  0.059 V  / 0.0197V  
-Av ≈ 3 
-
-Gain in dB:
-
-Av(dB) = 20 log(Av)  
-
-Av(dB) = 20 log(3)  
-Av(dB) ≈ 9.54 dB  
-
-# Theoretical Gain Calculation
-
-For a Common Source amplifier:
-
-Av = gm × RD  
-gm = 2ID / (VGS − Vth)
-
-Given:
-
-ID = 0.2 mA  
-VGS = 0.9 V  
-Vth = 0.366 V  
-RD = 5 kΩ  
-
-Overdrive voltage:
-
-Vov = VGS − Vth = 0.9 − 0.366 = 0.534 V  
-
-Transconductance:
-
-gm = (2 × 0.2 × 10⁻³) / 0.534  
-gm ≈ 0.75 mS  
-
-Therefore,
-
-Av = gm × RD  
-Av = (0.75 × 10⁻³) × (5000)  
-Av ≈ 3.7 
-
-Gain in dB:
-
-Av(dB) = 20 log(3.7)  
-Av(dB) ≈ 11.36 DB 
-
-The simulated gain (3 ) is lower than the theoretical(3.7) value due to channel length modulation, output resistance effects, and other non-ideal device characteristics.
-
-
-
-Vout = Vout(highest peak value) - Vout(lowest peak value);   1.02 - 0.96 = 0.06V ;
-
-Vin = Vin(highest peak value) - Vin(lowest peak value);     0.91 - 0.89  = 0.02 ;
-
-Overall gain (Av) = Vout / Vin = 0.06/0.02 ;
-
-Overall gain (Av) = 3 
-      
-From calculations(Theoritical):
-
-**gm = 2(Id)/(Vov)**
-
-i.e Vov = Vgs - Vth
-
-
-   = 2(200μ) / ( 0.534)
-
-   
-**gm = 749 μA/V**
-
-Rout = Rd = 5 kΩ
-
-
-Overall gain :
-
-**Av = gm * Rout**
-             
-    =  749 μ * 5 k
-    
-   **Av = 3.745**
-
-
-   # Results:
-   
-Id = 200μA
-
-Vov = 0.534 V
-
-Vout = 0.995 V
-
-Voltage gain = 3.7 V/V (in dB = 11.36 dB)
+| Parameter | Theoretical Value | Practical (Simulation) Value | Reason for Variation |
+|------------|------------------|-----------------------------|----------------------|
+| Drain Current (ID) | ≈ 0.2 mA | ≈ 0.2 mA | Minor rounding and model accuracy differences |
+| VDS (Q-point) | 1 V | ≈ 1 V | Slight deviation due to transistor model non-idealities |
+| Drain Resistor (RD) | 5 kΩ | 5 kΩ | Directly calculated from design equation |
+| Transistor Width (W) | 1.1 µm (calculated) |1.515 µm (adjusted) | Width tuned in simulation to achieve exact Q-point |
+| Voltage Gain (Av) | 3 | 3.7 | Channel length modulation and output resistance effects |
+| Gain (dB) | 9.54 dB | 11.36 dB | Practical gain reduced due to non-ideal device behavior |
+| 3 dB Bandwidth | — | 56  GHz | Limited by parasitic capacitances |
+| Unity Gain Bandwidth (UGB) | — | 150 MHz | Determined by dominant pole and device capacitances |
+| Gain Bandwidth Product (GBP) | — | ≈ 187 MHz | Product of midband gain and bandwidth |
 
 
 
 
-# Inference:
+
+### Inference:
 
  **DC Analysis:**
   The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 0.995V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
