@@ -8,6 +8,24 @@ A common-source amplifier is a type of FET amplifier where the input signal is a
 3. **Vdd (Drain Supply Voltage):** Provides DC biasing for the NMOS transistor.
 4. **AC Input (SINE source):** The test signal used to analyze circuit response.
 
+   
+## Given Parameters (From tsmc018.lib)
+ 
+- Vth = 0.366 V  
+- Tox = 4.1 × 10⁻⁹ m  
+- μn (U0) = 273.809 cm²/V·s  
+- εr (SiO₂) = 3.9  
+- ε0 = 8.854 × 10⁻¹² F/m  
+- Power constraint: P ≤ 1.2 mW  
+
+Since the input DC bias at the gate is 0.9 V,
+
+VGS = 0.9 V  
+
+As VGS > Vth (0.9 V > 0.366 V),  
+the NMOS operates in saturation region.
+
+
 **Circuit diagram:**
 <img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/11ec93cc-889f-432a-933a-01738c9226c4" />
 
@@ -34,7 +52,7 @@ The circuit consists of a tsmc 180nm NMOS transistor (CMOSN), a drain resistor a
 
 **Frequency:** 1kHz
 
-# Procedure:
+## Procedure:
 
 1.Create a new folder and name it as project file.Save the LT spice file in this folder.
 
@@ -47,6 +65,97 @@ The circuit consists of a tsmc 180nm NMOS transistor (CMOSN), a drain resistor a
 5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
 
 6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
+
+### THOERITICAL CALCULATION :
+
+### Step 1: Calculate Drain Current Using Power Constraint
+
+Using:
+
+P = V × I  
+
+0.4 × 10⁻³ = 2 × ID  
+
+ID = (0.4 × 10⁻³) /2 
+
+ID ≈ 2.00 × 10⁻⁴ A  
+
+ID ≈ 0.200 mA  
+
+### Step 2: Fix Q-Point
+
+For maximum symmetrical swing:
+
+VDS = VDD / 2  
+
+VDS = 2 / 2  
+
+VDS ≈ 1 V  
+
+### Step 3: Calculate Drain Resistor (RD)
+
+RD = (VDD − VDS) / ID  
+
+RD = (2 − 1) / (2 × 10⁻⁴)  
+
+RD ≈ 5 kΩ  
+
+### Step 4: Calculate Oxide Capacitance (Cox)
+
+First calculate oxide permittivity:
+
+εox = εr × ε0  
+
+εox = 3.9 × (8.854 × 10⁻¹²)  
+
+εox ≈ 3.45 × 10⁻¹¹ F/m  
+
+Now,
+
+Cox = εox / Tox  
+
+Cox = (3.45 × 10⁻¹¹) / (4.1 × 10⁻⁹)  
+
+Cox ≈ 8.42 × 10⁻³ F/m²  
+
+### Step 5: Calculate Process Transconductance Parameter (kn')
+
+Convert mobility to SI units:
+
+μn = 273.80 cm²/V·s  
+= 0.02738 m²/V·s  
+
+Now,
+
+kn' = μn × Cox  
+
+kn' = 0.02738 × (8.41 × 10⁻³)  
+
+kn' ≈ 2.306 × 10⁻⁴ A/V²  
+
+### Step 6: Calculate Required Transistor Width (W)
+
+Using MOSFET saturation equation:
+
+ID = (kn'/2) × (W/L) × (VGS − Vth)²  
+
+Given:
+
+VGS = 0.9 V  
+Vth = 0.366 V  
+
+(VGS − Vth) = 0.534 V  
+
+L = 180 nm = 180 × 10⁻⁹ m  
+
+Substituting:
+
+2.00 × 10⁻⁴ = (2.30 × 10⁻⁴ / 2) × (W / 180 × 10⁻⁹) × (0.534)²  
+
+Solving,
+
+W ≈ 1.1 µm  
+
 
 
 # DC analysis:
@@ -127,7 +236,15 @@ In this experiment, we will conduct an AC analysis to evaluate the frequency res
 For the same circuit, in the configure analysis select decade as type of sweep, with starting frequenciy o.1Hz and stop frequency as 100GHz.
 
 **Circuit diagram:**
-<img width="1361" height="574" alt="Screenshot 2026-02-24 173350" src="https://github.com/user-attachments/assets/8eea301b-8994-4002-a2fc-57981ba05afe" />
+
+### AC Response Without Load Capacitor
+
+<img width="1321" height="593" alt="Screenshot 2026-02-24 171817" src="https://github.com/user-attachments/assets/5358be05-6354-49a2-8639-4c7f9337af9f" />
+
+<img width="1361" height="574" alt="Screenshot 2026-02-24 173350" src="https://github.com/user-attachments/assets/e2290907-bf57-4b28-9278-b00f4d9da090" />
+
+
+
 
 
 **Voltage gain = Vout / Vin**
@@ -142,7 +259,30 @@ For the same circuit, in the configure analysis select decade as type of sweep, 
 
 **frequency @ 9.54 - 3 = 6.54
 
-**frequency = 91 GHz
+**frequency = 56 GHz
+
+
+
+### AC Response With Load Capacitor (CL = 10 pF)
+
+<img width="1311" height="596" alt="Screenshot 2026-02-24 230233" src="https://github.com/user-attachments/assets/6d2b2aec-a226-4625-9c7c-c9bfa44f1e7f" />
+
+
+
+
+<img width="1360" height="582" alt="Screenshot 2026-02-24 231639" src="https://github.com/user-attachments/assets/107c9ba9-0d1c-4296-b619-f44c50aa4741" />
+
+
+From AC plot (with CL = 10 pF):
+
+- Midband gain ≈ 3
+- Gain in dB ≈ 9.54 dB
+- 3 dB bandwidth ≈ 56.4 GHz
+- Unity Gain Bandwidth (UGB) ≈ 150.23 MHz
+- GBP ≈ 3 × 56.4 GHz
+     ≈  MHz (approx)
+
+
 
 
 
@@ -156,9 +296,85 @@ And the **AC amplitude as 1V**.
 In the configure analysis select  **stop time as 5ms**. There is **180 degree phase shift** between input and output and a DC level phase shift observed.
 
 **Circuit Diagram:**
+
 <img width="1363" height="578" alt="Screenshot 2026-02-24 172121" src="https://github.com/user-attachments/assets/ef1bd1cb-f7da-4367-93a8-47f69e06d574" />
 
-From simulated values:
+
+# Gain Calculation (From Transient Analysis)
+
+From the transient waveform:
+
+Voltage Gain (Av) = Vout / Vin  
+
+Peak-to-peak values were measured from the graph.
+
+Output voltage:
+
+Vout(max) = 1.032V  
+Vout(min) = 0.973 V  
+
+Vout(pp) =   1.032V -0.973 V
+Vout(pp) = 0.059 V 
+
+Input voltage:
+
+Vin(max) = 0.91  V  
+Vin(min) = 0.8903  V  
+
+Vin(pp) = 0.91  V - 0.8903  V  
+Vin(pp) = 0.0197  
+
+Therefore,
+Av = Vout(pp) / Vin(pp)  
+
+Av =  0.059 V  / 0.0197V  
+Av ≈ 3 
+
+Gain in dB:
+
+Av(dB) = 20 log(Av)  
+
+Av(dB) = 20 log(3)  
+Av(dB) ≈ 9.54 dB  
+
+# Theoretical Gain Calculation
+
+For a Common Source amplifier:
+
+Av = gm × RD  
+gm = 2ID / (VGS − Vth)
+
+Given:
+
+ID = 0.2 mA  
+VGS = 0.9 V  
+Vth = 0.366 V  
+RD = 5 kΩ  
+
+Overdrive voltage:
+
+Vov = VGS − Vth = 0.9 − 0.366 = 0.534 V  
+
+Transconductance:
+
+gm = (2 × 0.2 × 10⁻³) / 0.534  
+gm ≈ 0.75 mS  
+
+Therefore,
+
+Av = gm × RD  
+Av = (0.75 × 10⁻³) × (5000)  
+Av ≈ 3.7 
+
+Gain in dB:
+
+Av(dB) = 20 log(3.7)  
+Av(dB) ≈ 11.36 DB 
+
+The simulated gain (3 ) is lower than the theoretical(3.7) value due to channel length modulation, output resistance effects, and other non-ideal device characteristics.
+
+
+
 Vout = Vout(highest peak value) - Vout(lowest peak value);   1.02 - 0.96 = 0.06V ;
 
 Vin = Vin(highest peak value) - Vin(lowest peak value);     0.91 - 0.89  = 0.02 ;
@@ -199,11 +415,10 @@ Vov = 0.534 V
 
 Vout = 0.995 V
 
-Voltage gain = 3 V/V (in dB = 9.54 dB)
+Voltage gain = 3.7 V/V (in dB = 11.36 dB)
 
-gm = 749 μA/V
 
-Overall gain =  3.745V/V
+
 
 # Inference:
 
