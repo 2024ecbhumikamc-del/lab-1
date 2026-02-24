@@ -46,7 +46,7 @@ The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor a
 
 5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
 
-6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 0.1Hz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
+6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
 
 
 # DC analysis:
@@ -148,12 +148,14 @@ In the configure analysis select  **stop time as 5ms**. There is **180 degree ph
 
 **Circuit Diagram:**
 <img width="1363" height="578" alt="Screenshot 2026-02-24 172121" src="https://github.com/user-attachments/assets/ef1bd1cb-f7da-4367-93a8-47f69e06d574" />
-
-
+From simulated values:
+Vout = Vout(highest peak value) - Vout(lowest peak value); 0.
+Vin = Vin(highest peak value) - Vin(lowest peak value);
+Overall gain (Av) = Vout / Vin = 
 Overall gain (Av) = Vout / Vin
       = 3
 
-From calculations:
+From calculations(Theoritical):
 
 **gm = 2(Id)/(Vov)**
 
@@ -209,6 +211,14 @@ The circuit maintains a stable gain over different frequencies, proving it works
 The output signal is amplified and flipped by 180° (inverted), which is expected in a Common Source amplifier. The gain of the circuit is around 3. The circuit has an output resistance of 5kΩ, affecting how it drives the next stage in a system.
 
  
+
+
+
+
+
+
+
+
 
 
 
