@@ -40,11 +40,13 @@ The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor a
 
 2.Name the mosfet as CMOSN and the length as 500nm and width as 1.11um initially.
 
-3.**DC Analysis**: Set up the circuit as per the circuit diagram with proper connections ensuring valid circuit for further analysis. Apply the DC voltage of Vdd=2V and Vgs = 0.9 V . Go to simulate option in the tab and edit simulation command, click on DC analysis and press ok.(.op) Click on Run in the tab menu to get the DC operating point ,Vout and Id.
+3.**DC Analysis**: Set up the circuit as per the circuit diagram with proper connections ensuring valid circuit for further analysis. Apply the DC voltage of Vdd=2V and Vgs = 0.9 V . Go to simulate option in the tab and edit simulation command, click on DC analysis and press ok.(.op) Click on Run in the tab menu to get the DC operating point ,Vout and Id. 
 
-4.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
+4.**Transfer characteristics**:Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2" Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC).Now Run to see the response of drain current.
 
-5.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
+5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
+
+6.**AC Analysis:** Go to spice directive and give the library file path for the simulator to access the data through the path . Go to simulate option in the tab , edit simulation command , click on AC analysis and mention the time of sweep as decade , no of points as 10 and frequency as 1kHz to 100GHz and click on ok. Now Run to analyze the gain and frequency response of the circuit
 
 
 # DC analysis:
@@ -97,6 +99,18 @@ Vov = Vgs - Vth = 0.9 - 0.366 = 0.534V
 
 
 i.e **Vds > ( Vgs - Vth)**
+
+# Transfer characteristics :
+
+We know the equation for Vout i.e., Vout = VDD - Id*R1
+for VGS<VTH ; Id = 0; therefore Vout = VDD.
+for VGS>VTH ; Vout = VDD - Id*R1.
+Hence ,the increse in VGS will decrease the output voltage i.e.,Vout
+
+**Circuit diagram:**
+
+<img width="1362" height="578" alt="Screenshot 2026-02-24 172016" src="https://github.com/user-attachments/assets/0fef0c87-ee96-43ba-9ceb-43970d8d31ba" />
+
 
 
 # AC analysis:
