@@ -188,7 +188,7 @@ The circuit maintains a stable gain over different frequencies, proving it works
 
 
 **Transient Analysis:**
-The output signal is amplified and flipped by 180° (inverted), which is expected in a Common Source amplifier. The gain of the circuit is around 1. The circuit has an output resistance of 5kΩ, affecting how it drives the next stage in a system.
+The output signal is amplified and flipped by 180° (inverted), which is expected in a Common Source amplifier. The gain of the circuit is around 3. The circuit has an output resistance of 5kΩ, affecting how it drives the next stage in a system.
 
 
 
