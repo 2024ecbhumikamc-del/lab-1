@@ -85,7 +85,7 @@ The output load line equation is given by
     = (2 - 0.995)/200 µA
 
     
-   = 5000 Ω
+   = 5k Ω
 
 Therefore **Rd = 5 kΩ**
 
@@ -139,8 +139,10 @@ For the same circuit, in the configure analysis select decade as type of sweep, 
 = 20log10(3)
 
 **in dB = 9.54 dB**
+
 **frequency @ 9.54 - 3 = 6.54
-**frequency = 
+
+**frequency = 91 GHz
 
 
 
