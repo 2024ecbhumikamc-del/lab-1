@@ -55,7 +55,7 @@ The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor a
 
 
 If the Power dissipation is 0.4mW across the resistor, then the current through the resistor is given by:
-**Id** = Power/Voltage =  0.4m/ 2 = **200 µA**
+**Id** = Power/Voltage =  0.4m / 2 = **200 µA**
 
 **Vov = Vgs - Vth = 0.9 - 0.36 = 0.534 V**.
 As 'L' is 180nm and 'W' is 1.11um the Id value will be 156 µA. Keeping the L constant and start varying the width to get the required current Id value from the simulation.
@@ -82,17 +82,17 @@ The output load line equation is given by
    Rd = (Vdd - Vout) / Id
 
    
-    = (2 - 1)/200 µA
+    = (2 - 0.995)/200 µA
 
     
    = 5000 Ω
 
-Therefore **Rd = 5000 Ω**
+Therefore **Rd = 5 kΩ**
 
 The DC operating point analysis confirms that the NMOS transistor operates in the saturation region with Id ≈ 200μA.
 
 
-**Vds = Vout =  1 V**
+**Vds = Vout =  0.995 V**
 
 
 Vov = Vgs - Vth = 0.9 - 0.366 = 0.534V
@@ -151,8 +151,11 @@ In the configure analysis select  **stop time as 5ms**. There is **180 degree ph
 
 From simulated values:
 Vout = Vout(highest peak value) - Vout(lowest peak value);   1.02 - 0.96 = 0.06V ;
+
 Vin = Vin(highest peak value) - Vin(lowest peak value);     0.91 - 0.89  = 0.02 ;
+
 Overall gain (Av) = Vout / Vin = 0.06/0.02 ;
+
 Overall gain (Av) = 3 
       
 From calculations(Theoritical):
@@ -167,14 +170,14 @@ i.e Vov = Vgs - Vth
    
 **gm = 749 μA/V**
 
-Rout = Rd = 5000 Ω
+Rout = Rd = 5 kΩ
 
 
 Overall gain :
 
 **Av = gm * Rout**
              
-    =  749 μ * 5000
+    =  749 μ * 5 k
     
    **Av = 3.745**
 
@@ -185,7 +188,7 @@ Id = 200μA
 
 Vov = 0.534 V
 
-Vout = 1 V
+Vout = 0.995 V
 
 Voltage gain = 3 V/V (in dB = 9.54 dB)
 
@@ -196,7 +199,7 @@ Overall gain =  3.745V/V
 # Inference:
 
  **DC Analysis:**
-  The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 1V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
+  The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 0.995V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
 
  
 **Transfer characteristics:**
