@@ -1,6 +1,10 @@
-# Experiment-1-CS-amplifier-EC029
-# DC analysis,AC analysis,Transfer characteristics and Transient Analysis of Common Source Amplifier
+### Experiment-1-CS-amplifier-EC029
+
+
+### DC analysis,AC analysis,Transfer characteristics and Transient Analysis of Common Source Amplifier
 A common-source amplifier is a type of FET amplifier where the input signal is applied to the gate, and the output is taken from the drain. The source is typically grounded. It provides high voltage gain and **180-degree phase shift** (inversion) between the input and output. It’s widely used for amplifying weak signals in analog circuits, with the voltage gain determined by the load resistor and the transconductance of the FET.
+
+
 
 ### <u>Key Components and their roles</u>:
 1. **Rd (Drain Resistor):** Provides the required voltage drop to amplify the signal.
