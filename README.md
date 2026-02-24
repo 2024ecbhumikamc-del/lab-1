@@ -42,7 +42,7 @@ The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor a
 
 3.**DC Analysis**: Set up the circuit as per the circuit diagram with proper connections ensuring valid circuit for further analysis. Apply the DC voltage of Vdd=2V and Vgs = 0.9 V . Go to simulate option in the tab and edit simulation command, click on DC analysis and press ok.(.op) Click on Run in the tab menu to get the DC operating point ,Vout and Id. 
 
-4.**Transfer characteristics**:Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2" Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC).Now Run to see the response of drain current.
+4.**Transfer characteristics**: Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2" Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC).Now Run to see the response of drain current.
 
 5.**Transient Analysis:** Apply a sine wave input of Vgs=0.9V with an amplitude of 10mV and frequency of 1kHz by going to advanced menu in the voltage setting option.go to simulate option in tab ,edit simulation command , click on transient analysis and give the stop time as 5m and click ok. Now Run to visualise the response of the circuit to a time varying signal.
 
@@ -196,6 +196,10 @@ Overall gain =  3.745V/V
  **DC Analysis:**
   The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 1V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
 
+ 
+**Transfer characteristics:**
+The transfer characteristic curve shows that the transistor operates in the proper saturation (active) region for amplification. The Q-point lies in the linear region, ensuring proportional output response to input variations. The slope of the curve confirms stable gain, and minimal distortion is observed within the operating range. Overall, the circuit is properly biased for effective amplification.
+
 
 **AC Analysis:**
 The circuit maintains a stable gain over different frequencies, proving it works well for amplification. The voltage gain is 3 (or 9.54 dB), and the -3 dB point (where gain drops) confirms its frequency limits. Simulation and theoretical results are in close agreement, with minor variations due to parasitic effects.
@@ -204,6 +208,7 @@ The circuit maintains a stable gain over different frequencies, proving it works
 **Transient Analysis:**
 The output signal is amplified and flipped by 180° (inverted), which is expected in a Common Source amplifier. The gain of the circuit is around 3. The circuit has an output resistance of 5kΩ, affecting how it drives the next stage in a system.
 
+ 
 
 
 
