@@ -148,13 +148,13 @@ In the configure analysis select  **stop time as 5ms**. There is **180 degree ph
 
 **Circuit Diagram:**
 <img width="1363" height="578" alt="Screenshot 2026-02-24 172121" src="https://github.com/user-attachments/assets/ef1bd1cb-f7da-4367-93a8-47f69e06d574" />
-From simulated values:
-Vout = Vout(highest peak value) - Vout(lowest peak value); 0.
-Vin = Vin(highest peak value) - Vin(lowest peak value);
-Overall gain (Av) = Vout / Vin = 
-Overall gain (Av) = Vout / Vin
-      = 3
 
+From simulated values:
+Vout = Vout(highest peak value) - Vout(lowest peak value);   1.02 - 0.96 = 0.06V ;
+Vin = Vin(highest peak value) - Vin(lowest peak value);     0.91 - 0.89  = 0.02 ;
+Overall gain (Av) = Vout / Vin = 0.06/0.02 ;
+Overall gain (Av) = 3 
+      
 From calculations(Theoritical):
 
 **gm = 2(Id)/(Vov)**
