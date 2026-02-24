@@ -430,7 +430,7 @@ From AC plot (with CL = 10 pF):
 ### Inference:
 
  **DC Analysis:**
-  The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 0.995V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
+  The transistor is working correctly in the saturation region, which is needed for amplification. The current flowing through the circuit is 200 µA, and the resistor value 5kΩ is verified. The output voltage is around 1V, and the input voltage is 0.9V. The transistor is properly biased for amplification.
 
  
 **Transfer characteristics:**
