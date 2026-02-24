@@ -15,7 +15,7 @@ A common-source amplifier is a type of FET amplifier where the input signal is a
 This report presents the DC analysis, AC analysis, Transient analysis of a common-source NMOS amplifier. The objective of this analysis is to determine the DC biasing conditions, gain and output impedence using Transient analysis, and to find frequency response using AC analysis.
 
 ## **Component Details:**
-The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor and two voltage sources. The drain resistor limits the current through the transistor and affects the small-signal gain. The NMOS transistor operates in saturation region, making it suitable for amplification.
+The circuit consists of a tsmc 180nm NMOS transistor (CMOSN), a drain resistor and two voltage sources. The drain resistor limits the current through the transistor and affects the small-signal gain. The NMOS transistor operates in saturation region, making it suitable for amplification.
 **Model:** **CMOSN**
 
 **Channel Length:** 180nm
@@ -24,7 +24,7 @@ The circuit consists of a TSMC 180nm NMOS transistor (CMOSN), a drain resistor a
 
 **Threshold Voltage:** 0.366V
 
-**Resistor:** 5000 ohm
+**Resistor:** 5 k ohm
 
 **Supply Voltage:** 2V
 
@@ -102,10 +102,17 @@ i.e **Vds > ( Vgs - Vth)**
 
 # Transfer characteristics :
 
-We know the equation for Vout i.e., Vout = VDD - Id*R1
-for VGS<VTH ; Id = 0; therefore Vout = VDD.
-for VGS>VTH ; Vout = VDD - Id*R1.
-Hence ,the increse in VGS will decrease the output voltage i.e.,Vout
+We know the equation for output voltage:
+
+Vout = VDD − ID*R1
+
+For VGS < VTH, the MOSFET is OFF. Therefore, ID = 0 and Vout = VDD.
+
+For VGS > VTH, the MOSFET turns ON and current ID flows. Hence, Vout = VDD − ID*R1.
+
+As VGS increases, ID increases. This increases the voltage drop across R1, which decreases the output voltage Vout.
+
+
 
 **Circuit diagram:**
 
@@ -129,12 +136,12 @@ For the same circuit, in the configure analysis select decade as type of sweep, 
 
  **in dB = 20log10(Vout / Vin)**
 
-
-     = 20log10(3)
-
-  
+= 20log10(3)
 
 **in dB = 9.54 dB**
+**frequency @ 9.54 - 3 = 6.54
+**frequency = 
+
 
 
 # Transient Analysis:
