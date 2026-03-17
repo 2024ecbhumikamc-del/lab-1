@@ -152,7 +152,7 @@ Transient command used:
 
 ## Gain Analysis
 
-### 1️⃣ Practical Gain (From Transient Analysis)
+### 1️ Practical Gain (From Transient Analysis)
 
 Measured from waveform:
 
@@ -727,11 +727,19 @@ To obtain desired operating point width of mosfet is varied
 
 <img width="851" height="486" alt="Image" src="https://github.com/user-attachments/assets/4424d991-990d-4942-bdcf-aa955b826268" />
 
+The DC operating point (Q-point) defines the steady-state voltages and currents of the circuit when no input signal is applied. It ensures that all MOSFETs operate in the saturation region, which is necessary for proper amplification.
+
+In this circuit, the biasing is adjusted by selecting appropriate transistor dimensions so that the drain current remains close to the specified 200 µA, while maintaining sufficient overdrive voltage. This guarantees stable operation and allows the amplifier to produce a linear output without distortion.
+
 
 
 ## DC Sweep Analysis:  
 
 <img width="1917" height="605" alt="Image" src="https://github.com/user-attachments/assets/00fc67b6-376b-44d1-98c5-3e2601e79467" />
+
+DC sweep analysis is used to study how the output voltage varies with respect to the input voltage (VIN). By sweeping VIN over a range, the transfer characteristics of the amplifier are obtained.
+
+From the curve, the region where the output varies linearly with input indicates proper amplification. This also helps verify that the transistor remains in saturation over the operating range and confirms the correctness of the chosen biasing conditions.
 
 
 
