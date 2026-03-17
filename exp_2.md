@@ -1,15 +1,15 @@
-# LIC_Amplifier_Configurations_Experiment-2
+# Experiment-2___029
 Design and comparative analysis of three amplifier configurations using 180nm CMOS in LTspice.
 ## AIM
 
-To design and analyze a Common Source (CS) amplifier with PMOS active load using 180nm CMOS technology and evaluate its DC, Transient and AC performance.
+## To design and analyze a Common Source (CS) amplifier with PMOS active load using 180nm CMOS technology and evaluate its DC, Transient and AC performance.
 ## GIVEN SPECIFICATIONS
 
 | Parameter | Value |
 |------------|--------|
 | VDD | 2 V |
 | Power Constraint | ≤ 0.4 mW |
-| Load Capacitor (CL) | 1 pF |
+| Load Capacitor (CL) | 10 pF |
 | Channel Length (L) | 180 nm |
 | Assumed Overdrive Voltage (Vov) | 0.25 V |
 | Source Voltage Drop (VRS) | 0.2 V |
