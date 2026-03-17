@@ -1,4 +1,6 @@
 # Experiment-2___029
+
+### Circuit - 1
 Design and comparative analysis of three amplifier configurations using 180nm CMOS in LTspice.
 ## AIM
 
@@ -268,3 +270,393 @@ Bandwidth is determined at the frequency where gain drops by 3 dB from midband v
 - Bandwidth ≈ 91.73 GHz.
 
 
+
+
+
+
+
+### Circuit - 2
+
+
+---
+
+# Circuit Diagram
+
+<img width="1085" height="832" alt="cascode circuit" src="https://github.com/user-attachments/assets/47ac7ce2-b62a-4afc-a04b-28355c51c25a" />
+
+---
+
+# Given Design Parameters
+
+| Parameter              | Symbol | Value    |
+| ---------------------- | ------ | -------- |
+| Supply Voltage         | VDD    | 2 V      |
+| Desired Drain Current  | ID     | 200 µA   |
+| Maximum Power          | Pcons  | ≤ 1.2 mW |
+| Overdrive Voltage      | VOV    | 0.25 V   |
+| Load Capacitance       | CL     | 10 pF     |
+| Channel Length         | L      | 180 nm   |
+| NMOS Threshold Voltage | Vthn   | 0.36 V   |
+| PMOS Threshold Voltage | Vthp   | 0.39 V   |
+
+---
+
+# Circuit Operation
+
+The cascode amplifier consists of three major devices:
+
+*M1 – Input NMOS (Common Source Stage)*
+This transistor converts the small input voltage variations into a corresponding drain current.
+
+*M3 – Bias Current Source*
+This device provides a constant bias current and replaces the need for a degeneration resistor.
+
+*M2 – PMOS Active Load*
+The PMOS transistor acts as a high-resistance load, improving voltage gain and increasing output swing.
+
+---
+
+# Advantage of Cascode Configuration
+
+In a simple common source amplifier, the output resistance is approximately
+
+ro1 || ro2
+
+However, the cascode arrangement significantly increases the effective output resistance.
+
+Approximate output resistance:
+
+gm1 · ro1 · ro3
+
+Since voltage gain is proportional to
+
+Av ≈ gm × Rout
+
+an increase in output resistance results in a *larger voltage gain without increasing device dimensions*.
+
+---
+
+# DC Analysis
+
+## Power Consumption Check
+
+Assuming the designed drain current:
+
+ID = 200 µA
+
+Power consumption:
+
+P = VDD × ID
+P = 2 × 200 µA
+P = 0.4 mW
+
+Since
+
+0.4 mW ≤ 1.2 mW
+
+the design satisfies the power constraint.
+
+---
+
+## Output Bias Point
+
+For symmetrical signal swing,
+
+Vout ≈ VDD / 2
+
+Vout = 2 / 2 = 1 V
+
+---
+
+# NMOS Bias Calculations
+
+## Transistor M3
+
+Gate-source voltage:
+
+VGS3 = VOV + VTH
+
+VGS3 = 0.25 + 0.36
+VGS3 = 0.61 V
+
+Assume source node voltage
+
+VS1 = 0.3 V
+
+Drain-source voltage:
+
+VDS3 = VS1 = 0.3 V
+
+### Saturation Check
+
+Condition 1:
+
+VGS ≥ VTH
+0.61 ≥ 0.36 
+
+Condition 2:
+
+VDS ≥ VOV
+0.3 ≥ 0.25 
+
+Therefore *M3 operates in saturation*.
+
+---
+
+## Transistor M1
+
+Gate-source voltage:
+
+VGS1 = VOV + VTH
+VGS1 = 0.61 V
+
+Gate voltage:
+
+VG1 = VS1 + VGS1
+VG1 = 0.3 + 0.61
+VG1 = 0.91 V
+
+Drain-source voltage:
+
+VDS1 = VOUT − VS1
+VDS1 = 1 − 0.3
+VDS1 = 0.7 V
+
+### Saturation Verification
+
+0.61 ≥ 0.36 
+0.7 ≥ 0.25 
+
+Thus *M1 also remains in saturation*.
+
+---
+
+# PMOS Load Transistor (M2)
+
+For PMOS:
+
+VSG2 = VOV + |VTH|
+
+VSG2 = 0.25 + 0.39
+VSG2 = 0.64 V
+
+Gate voltage:
+
+VSG2 = VS2 − VG2
+
+0.64 = 2 − VG2
+
+VG2 = 1.36 V
+
+Drain-source voltage:
+
+VSD2 = VDD − VOUT
+VSD2 = 2 − 1
+VSD2 = 1 V
+
+### Saturation Condition
+
+0.64 ≥ 0.39 
+1 ≥ 0.25 
+
+Hence *M2 operates in saturation*.
+
+---
+
+# Transistor Width Calculation
+
+For NMOS devices:
+
+ID = (1/2) μn Cox (W/L) (VOV)²
+
+Using process parameters:
+
+Kn′ = μnCox ≈ 230 × 10⁻⁶ A/V²
+
+After substituting ID = 200 µA:
+
+Calculated width
+
+Wn ≈ 5 µm
+
+---
+
+For PMOS:
+
+ID = (1/2) μp Cox (W/L) (VOV)²
+
+Resulting width
+
+Wp ≈ 11.8 µm
+
+---
+
+# Initial Simulation Result
+
+<img width="1860" height="851" alt="initial result" src="https://github.com/user-attachments/assets/4a56d35e-2242-4ca8-a475-c8b9abb1e88c" />
+
+Simulation output:
+
+ID = 63.5 µA
+Vout = 1.46 V
+
+Current scaling factor:
+
+200 / 63.5 = 3.14
+
+Thus transistor widths were scaled accordingly.
+
+---
+
+# Final Device Dimensions
+
+| Device    | Width   |
+| --------- | ------- |
+| M1        | 18.5 µm |
+| M3        | 16.6 µm |
+| PMOS Load | 34.6 µm |
+
+After tuning the widths, the circuit achieved:
+
+ID = 200 µA
+VOUT = 1 V
+
+---
+
+# DC Sweep (Transfer Characteristic)
+
+<img width="1918" height="855" alt="transfer curve" src="https://github.com/user-attachments/assets/e99cc4d4-4abc-46cd-91f1-633cdb31bac2" />
+
+The voltage transfer characteristic shows three operating regions:
+
+### Cut-off Region
+
+For input voltage below threshold, transistor M1 is OFF.
+The output node remains near VDD.
+
+### Active Region
+
+When the input exceeds threshold, the transistors operate in saturation.
+Small variations in Vin produce large changes in Vout, giving maximum gain.
+
+### Linear Region
+
+For higher Vin values, the output drops significantly and the NMOS devices enter the triode region, limiting the output swing.
+
+---
+
+# Transient Analysis
+
+## Input Signal
+
+<img width="1917" height="851" src="https://github.com/user-attachments/assets/53b720da-3642-4794-9b44-c4139ef3b32f" />
+
+## Output Signal
+
+<img width="1918" height="852" src="https://github.com/user-attachments/assets/99d4468c-4c52-4ee9-b35b-3fe7ec09a49a" />
+
+---
+
+## Measured Results
+
+| Parameter           | Value    |
+| ------------------- | -------- |
+| Input Peak-to-Peak  | 19.33 mV |
+| Output Peak-to-Peak | 0.066 V  |
+| Voltage Gain        | 3.41 V/V |
+| Gain (dB)           | 10.65 dB |
+| Frequency           | 1 kHz    |
+| Phase Shift         | 180°     |
+
+Since the circuit is based on a common source stage, the output signal is *inverted relative to the input*.
+
+---
+
+# Small Signal Gain Calculation
+
+Transconductance:
+
+gm = 2ID / VOV
+
+gm = (2 × 200µA) / 0.25
+gm = 1.6 mS
+
+Output resistances:
+
+ro1 = 1/(λn ID) ≈ 50 kΩ
+ro2 = 50 kΩ
+
+PMOS:
+
+ro3 ≈ 41.6 kΩ
+
+Effective resistance:
+
+ro_eff ≈ 22.7 kΩ
+
+Voltage gain:
+
+Av ≈ −0.448 V/V
+
+Gain in dB:
+
+Av ≈ 6.97 dB
+
+---
+
+# Gain Comparison
+
+| Metric     | Theoretical | Simulated |
+| ---------- | ----------- | --------- |
+| Gain (V/V) | 0.448       | 3.41      |
+| Gain (dB)  | 6.97        | 10.65     |
+
+The simulated gain is larger because the practical transistor parameters produce higher output resistance than assumed in theoretical calculations.
+
+---
+
+# AC Analysis
+
+## Frequency Response
+
+<img width="1918" height="851" src="https://github.com/user-attachments/assets/deb7b771-90da-4c60-ae43-4cfffbe11d20" />
+
+Measured values:
+
+Lower cutoff frequency ≈ 0 Hz
+Upper cutoff frequency ≈ 145.41 MHz
+
+Bandwidth:
+
+BW ≈ 145.41 MHz
+
+---
+
+# Unity Gain Bandwidth
+
+<img width="1911" height="881" src="https://github.com/user-attachments/assets/d063dda5-be25-4ab3-a797-ff54c4b69674" />
+
+From simulation:
+
+UGB ≈ 469.31 MHz
+
+From gain-bandwidth product:
+
+UGB ≈ 494.39 MHz
+
+Both values are close, confirming the validity of the design.
+
+---
+
+# Conclusion
+
+The cascode amplifier was successfully designed using 180 nm CMOS technology.
+All transistors operate in the saturation region, ensuring proper biasing and stable operation.
+
+Key observations:
+
+* The cascode structure significantly increases output resistance and voltage gain.
+* Simulation results confirm the expected gain-bandwidth relationship.
+* The amplifier achieves a wide bandwidth suitable for high-speed analog applications.
+
+Overall, the circuit demonstrates the effectiveness of the cascode topology for achieving *high gain with good bandwidth performance* in modern CMOS analog designs.
