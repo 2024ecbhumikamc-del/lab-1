@@ -282,7 +282,7 @@ Bandwidth is determined at the frequency where gain drops by 3 dB from midband v
 
 # Circuit Diagram
 
-<img width="1085" height="832" alt="cascode circuit" src="https://github.com/user-attachments/assets/47ac7ce2-b62a-4afc-a04b-28355c51c25a" />
+<img width="1366" height="720" alt="Screenshot 2026-03-18 011637" src="https://github.com/user-attachments/assets/af106025-dc04-47d3-9f7d-28257f0f0221" />
 
 ---
 
