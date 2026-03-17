@@ -8,14 +8,14 @@
 | Parameter | Value |
 |------------|--------|
 | VDD | 2 V |
-| Power Constraint | ≤ 0.4 mW |
-| Load Capacitor (CL) | 10 pF |
+| Power Constraint | ≤ 1.2 mW |
+| Load Capacitor (CL) | 1 pF |
 | Channel Length (L) | 180 nm |
 | Assumed Overdrive Voltage (Vov) | 0.25 V |
 | Source Voltage Drop (VRS) | 0.2 V |
 ---
 
-# CIRCUIT 1  
+# CIRCUIT - 1  
 ## Common Source Amplifier with PMOS Active Load
 ### Circuit Diagram
 
@@ -42,7 +42,7 @@ The circuit is designed to operate all transistors in the **saturation region** 
 
 Given:
 VDD = 2 V  
-P ≤ 0.4 mW  
+P ≤ 1.2 mW  
 
 P = VDD × ID  
 
@@ -290,7 +290,7 @@ Bandwidth is determined at the frequency where gain drops by 3 dB from midband v
 | Desired Drain Current  | ID     | 200 µA   |
 | Maximum Power          | Pcons  | ≤ 1.2 mW |
 | Overdrive Voltage      | VOV    | 0.25 V   |
-| Load Capacitance       | CL     | 10 pF     |
+| Load Capacitance       | CL     | 1 pF     |
 | Channel Length         | L      | 180 nm   |
 | NMOS Threshold Voltage | Vthn   | 0.36 V   |
 | PMOS Threshold Voltage | Vthp   | 0.39 V   |
