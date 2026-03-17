@@ -19,7 +19,8 @@ To design and analyze a Common Source (CS) amplifier with PMOS active load using
 ## Common Source Amplifier with PMOS Active Load
 ### Circuit Diagram
 
-![Circuit2](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/circuit2.png)
+<img width="1366" height="768" alt="Screenshot 2026-03-17 235515" src="https://github.com/user-attachments/assets/1ca018b8-f7c5-4922-a5e8-8a930c39d355" />
+
 
 
 ### Circuit Description
@@ -106,7 +107,8 @@ RS ≈ 1 kΩ
 The above calculations ensure proper DC biasing and saturation region operation.
 ## DC Simulation Result
 
-![Circuit2_DC](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/circuit2_dc.png)
+<img width="638" height="515" alt="Screenshot 2026-03-17 234915" src="https://github.com/user-attachments/assets/75d2a668-13b1-4d79-93d9-78d70212d316" />
+
 
 ### Observations
 - ID(M1) ≈ 0.335 mA  
@@ -136,26 +138,15 @@ The simulated drain current matches the calculated value (0.334 mA), confirming 
 
 A sinusoidal input signal was applied at the gate terminal:
 
-Vin = SINE (0.9 10m 1k)
+Vin = SINE (0.81 10m 1k)
 
 Transient command used:
 
 .tran 5m
-### Input Waveform (Vin)
 
-![Circuit1_Vout](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/Circuit1_Vin.png.jpg)
+### Input and Output Waveforms
 
----
-
-### Output Waveform (Vout)
-
-![Circuit1_Vin](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/Circuit1_Vout.png.jpg)
-
----
-
-### Combined Input and Output Waveforms
-
-![Circuit1_Vout](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/Circuit1_Vin_Vout.png.jpg)
+<img width="1366" height="768" alt="Screenshot 2026-03-17 235045" src="https://github.com/user-attachments/assets/695e10dc-0d39-4a58-9864-191d3511dfa2" />
 
 ---
 
