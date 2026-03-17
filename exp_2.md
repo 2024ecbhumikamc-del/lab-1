@@ -516,6 +516,12 @@ Thus transistor widths were scaled accordingly.
 | M3        | 16.6 µm |
 | PMOS Load | 34.6 µm |
 
+# Final Simulation Result
+
+<img width="638" height="515" alt="Screenshot 2026-03-18 012419" src="https://github.com/user-attachments/assets/9c05719e-06ab-43aa-94cc-3cbc76e57ab8" />
+
+
+
 After tuning the widths, the circuit achieved:
 
 ID = 200 µA
@@ -525,7 +531,7 @@ VOUT = 1 V
 
 # DC Sweep (Transfer Characteristic)
 
-<img width="1918" height="855" alt="transfer curve" src="https://github.com/user-attachments/assets/e99cc4d4-4abc-46cd-91f1-633cdb31bac2" />
+<img width="1366" height="720" alt="Screenshot 2026-03-18 012608" src="https://github.com/user-attachments/assets/8bc12058-14a7-4cf4-8238-a1fe4a426c08" />
 
 The voltage transfer characteristic shows three operating regions:
 
@@ -547,13 +553,10 @@ For higher Vin values, the output drops significantly and the NMOS devices enter
 
 # Transient Analysis
 
-## Input Signal
+## Input Signal and Output waveform
 
-<img width="1917" height="851" src="https://github.com/user-attachments/assets/53b720da-3642-4794-9b44-c4139ef3b32f" />
+<img width="1366" height="720" alt="Screenshot 2026-03-18 012801" src="https://github.com/user-attachments/assets/5e7820df-e1fe-4845-825a-a8f7ad3dce29" />
 
-## Output Signal
-
-<img width="1918" height="852" src="https://github.com/user-attachments/assets/99d4468c-4c52-4ee9-b35b-3fe7ec09a49a" />
 
 ---
 
@@ -619,7 +622,7 @@ The simulated gain is larger because the practical transistor parameters produce
 
 ## Frequency Response
 
-<img width="1918" height="851" src="https://github.com/user-attachments/assets/deb7b771-90da-4c60-ae43-4cfffbe11d20" />
+<img width="1366" height="720" alt="Screenshot 2026-03-18 013007" src="https://github.com/user-attachments/assets/ca87e2c2-fb6d-4384-8d6c-c9b276b264a1" />
 
 Measured values:
 
@@ -632,21 +635,7 @@ BW ≈ 145.41 MHz
 
 ---
 
-# Unity Gain Bandwidth
 
-<img width="1911" height="881" src="https://github.com/user-attachments/assets/d063dda5-be25-4ab3-a797-ff54c4b69674" />
-
-From simulation:
-
-UGB ≈ 469.31 MHz
-
-From gain-bandwidth product:
-
-UGB ≈ 494.39 MHz
-
-Both values are close, confirming the validity of the design.
-
----
 
 # Conclusion
 
