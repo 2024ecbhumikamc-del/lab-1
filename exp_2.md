@@ -804,7 +804,7 @@ Circuit 3: Diode-Connected Source Degeneration
 
 #  Overall Comparison of CS Amplifier Configurations (Experiment 2A, 2B, 2C)
 
-| Parameter | Circuit 1: CS + PMOS Load + RS | Circuit 2: CS + PMOS Load + NMOS Current Source | Circuit 3: CS + PMOS Load + Diode NMOS |
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
 |----------|--------------------------------|-----------------------------------------------|----------------------------------------|
 | Technology | 180 nm CMOS | 180 nm CMOS | 180 nm CMOS |
 | Supply Voltage (VDD) | 2 V | 2 V | 2 V |
