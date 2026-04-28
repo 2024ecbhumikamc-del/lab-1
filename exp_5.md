@@ -15,8 +15,14 @@ Design a non-inverting amplifier with voltage gain:
 Design a voltage follower with:
 - RL = 360Ω
 
-  ## (d) Non-Inverting Amplifier
+### (d) Non-Inverting Amplifier
 
+### non-inverting amplifier circuit:
+
+ <img width="1364" height="597" alt="Screenshot 2026-04-28 211542" src="https://github.com/user-attachments/assets/96b9c2e4-e705-4677-ae0a-9a7a5eac4d8d" />
+
+
+  
 ### Theory
 A non-inverting amplifier is an op-amp circuit where the input signal is applied to the non-inverting terminal (+). The inverting terminal (-) is connected to the output through a feedback network.
 
@@ -38,6 +44,9 @@ Rf / R1 = 5
 Example:
 R1 = 1k ohm
 Rf = 5k ohm
+Vin = 4.5(peak)
+Av = 1 + (5000 / 1000) = 6
+Theoretical Vout = 6 * 4.5V = 27V
 
 ---
 
@@ -52,16 +61,10 @@ Rf = 5k ohm
 Output equation:
 Vout = Av × Vin
 
----
+## transient analysis:
 
-- Output and input are in same phase
-- Gain is always greater than or equal to 1
-- Circuit is stable due to negative feedback
+<img width="1358" height="605" alt="Screenshot 2026-04-28 211640" src="https://github.com/user-attachments/assets/74194430-fdac-4da8-8b54-e58cf03e494e" />
 
-
-  ### non-inverting amplifier circuit:
-
-  <img width="1363" height="611" alt="Screenshot 2026-04-28 210239" src="https://github.com/user-attachments/assets/88b9e1eb-94fe-4fa9-9096-dec3daef8e7d" />
 
 
 
